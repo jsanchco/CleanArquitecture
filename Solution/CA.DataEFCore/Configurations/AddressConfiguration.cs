@@ -15,6 +15,7 @@
             entity.ToTable("Address");
 
             entity.HasKey(x => x.Id);
+            entity.Property(x => x.Id).ValueGeneratedOnAdd();
             entity.Property(x => x.AddedDate).IsRequired();
             entity.Property(x => x.Street).IsRequired();
 

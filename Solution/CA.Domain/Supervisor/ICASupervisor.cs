@@ -1,4 +1,5 @@
-﻿namespace CA.Domain.Supervisor
+﻿// ReSharper disable InconsistentNaming
+namespace CA.Domain.Supervisor
 {
     #region Using
 

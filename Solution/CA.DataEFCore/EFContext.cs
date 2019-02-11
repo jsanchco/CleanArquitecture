@@ -1,4 +1,5 @@
-﻿namespace CA.DataEFCore
+﻿// ReSharper disable InconsistentNaming
+namespace CA.DataEFCore
 {
     #region Using
 
