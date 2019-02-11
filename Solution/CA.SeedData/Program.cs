@@ -1,9 +1,4 @@
 ﻿// ReSharper disable InconsistentNaming
-
-using System.Diagnostics;
-using System.Linq;
-using System.Threading;
-
 namespace CA.SeedData
 {
     #region Using
@@ -14,6 +9,8 @@ namespace CA.SeedData
     using DataEFCore;
     using Domain.Entities;
     using Microsoft.EntityFrameworkCore;
+    using System.Diagnostics;
+    using System.Linq;
 
     #endregion
 
@@ -27,7 +24,7 @@ namespace CA.SeedData
             Console.WriteLine("*****************************");
             Console.WriteLine("");
             Console.WriteLine("");
-            Console.WriteLine("Chose Provider ...");
+            Console.WriteLine("Choose Provider ...");
             Console.WriteLine("");
             Console.WriteLine("1 - SQL");
             Console.WriteLine("2 - Oracle");
@@ -132,7 +129,5 @@ namespace CA.SeedData
                 Console.WriteLine("");
             }
         }
-
-        public enum TypeSeed { SQL = 1, Oracle};
     }
 }
