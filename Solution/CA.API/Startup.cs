@@ -9,6 +9,7 @@
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Logging;
     using Configurations;
+    using Swashbuckle.AspNetCore.Swagger;
 
     #endregion
 
@@ -36,14 +37,14 @@
                 .AddConnectionProvider(Configuration)
                 .AddAppSettings(Configuration);
 
-            //services.AddSwaggerGen(s =>
-            //{
-            //    s.SwaggerDoc("v1", new Info
-            //    {
-            //        Title = "Chinook API",
-            //        Description = "Chinook Music Store API"
-            //    });
-            //});
+            services.AddSwaggerGen(s =>
+            {
+                s.SwaggerDoc("v1", new Info
+                {
+                    Title = "People API",
+                    Description = "People Infromation Store API"
+                });
+            });
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
@@ -61,6 +62,12 @@
                 routes.MapRoute(
                     "default",
                     "{controller=Home}/{action=Index}/{id?}");
+            });
+
+            app.UseSwagger();
+            app.UseSwaggerUI(s => {
+                s.SwaggerEndpoint("/swagger/v1/swagger.json", "v1 docs");
+                s.RoutePrefix = string.Empty;
             });
         }
     }
