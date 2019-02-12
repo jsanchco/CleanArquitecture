@@ -8,6 +8,7 @@
     using System.Threading.Tasks;
     using Domain.Supervisor;
     using Domain.ViewModels;
+    using Microsoft.Extensions.Logging;
 
     #endregion
 
@@ -16,9 +17,11 @@
     public class AddressesController : ControllerBase
     {
         private readonly ICASupervisor _caSupervisor;
+        private readonly ILogger<AddressesController> _logger;
 
-        public AddressesController(ICASupervisor caSupervisor)
+        public AddressesController(ILogger<AddressesController> logger, ICASupervisor caSupervisor)
         {
+            _logger = logger;
             _caSupervisor = caSupervisor;
         }
 
@@ -32,9 +35,9 @@
             }
             catch (Exception ex)
             {
+                _logger.LogError(ex, "Exception: ");
                 return StatusCode(500, ex);
             }
         }
-
     }
 }

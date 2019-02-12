@@ -10,14 +10,16 @@
     using Microsoft.Extensions.Logging;
     using Configurations;
     using Swashbuckle.AspNetCore.Swagger;
+    using Serilog;
 
     #endregion
 
     public class Startup
     {
         public Startup(IConfiguration configuration)
-        {
+        {            
             Configuration = configuration;
+            Log.Logger = new LoggerConfiguration().ReadFrom.Configuration(configuration).CreateLogger();
         }
 
         public IConfiguration Configuration { get; }
@@ -55,6 +57,8 @@
             }
 
             app.UseCors("AllowAll");
+
+            loggerFactory.AddSerilog();
 
             app.UseStaticFiles();
             app.UseMvc(routes =>
