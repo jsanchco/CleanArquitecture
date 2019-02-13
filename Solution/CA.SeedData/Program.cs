@@ -85,7 +85,9 @@ namespace CA.SeedData
                     Surname = "Sánchez Corzo",
                     AddedDate = DateTime.Now,
                     Age = 46,
-                    BirthDate = new DateTime(1972, 8, 1)
+                    BirthDate = new DateTime(1972, 8, 1),
+                    Email = "jsanchco@gmail.com",
+                    Password = "123456"
                 };
 
                 if (!context.User.Any())

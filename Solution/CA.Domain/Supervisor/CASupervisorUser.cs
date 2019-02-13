@@ -15,6 +15,12 @@ namespace CA.Domain.Supervisor
 
     public partial class CASupervisor
     {
+        public async Task<UserViewModel> Authenticate(string email, string password, CancellationToken ct = default(CancellationToken))
+        {
+            var userViewModel = UserConverter.Convert(await _userRepository.Authenticate(email, password, ct));
+            return userViewModel;
+        }
+
         public async Task<List<UserViewModel>> GetAllUserAsync(CancellationToken ct = default(CancellationToken))
         {
             return UserConverter.ConvertList(await _userRepository.GetAllAsync(ct));

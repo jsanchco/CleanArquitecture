@@ -60,12 +60,16 @@ namespace CA.DataEFCore.Migrations
 
                     b.Property<DateTime>("BirthDate");
 
+                    b.Property<string>("Email");
+
                     b.Property<string>("IPAddress");
 
                     b.Property<DateTime?>("ModifiedDate");
 
                     b.Property<string>("Name")
                         .IsRequired();
+
+                    b.Property<string>("Password");
 
                     b.Property<string>("Surname");
 

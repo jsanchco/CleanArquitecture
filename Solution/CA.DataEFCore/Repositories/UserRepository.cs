@@ -30,6 +30,11 @@
             return await GetByIdAsync(id, ct) != null;
         }
 
+        public async Task<User> Authenticate(string email, string password, CancellationToken ct = default(CancellationToken))
+        {
+            return await _context.User.FirstOrDefaultAsync(x => x.Email == email && x.Password == password, ct);
+        }
+
         public async Task<List<User>> GetAllAsync(CancellationToken ct = default(CancellationToken))
         {
             return await _context.User.ToListAsync(ct);

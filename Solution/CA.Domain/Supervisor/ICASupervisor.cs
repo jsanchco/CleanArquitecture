@@ -25,6 +25,7 @@ namespace CA.Domain.Supervisor
 
         #region User
 
+        Task<UserViewModel> Authenticate(string user, string password, CancellationToken ct = default(CancellationToken));
         Task<List<UserViewModel>> GetAllUserAsync(CancellationToken ct = default(CancellationToken));
         Task<UserViewModel> GetUserByIdAsync(int id, CancellationToken ct = default(CancellationToken));
         Task<UserViewModel> AddUserAsync(UserViewModel newUserViewModel, CancellationToken ct = default(CancellationToken));

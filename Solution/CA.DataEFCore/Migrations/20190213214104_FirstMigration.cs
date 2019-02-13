@@ -20,7 +20,9 @@ namespace CA.DataEFCore.Migrations
                     Name = table.Column<string>(nullable: false),
                     Surname = table.Column<string>(nullable: true),
                     Age = table.Column<int>(nullable: false),
-                    BirthDate = table.Column<DateTime>(nullable: false)
+                    BirthDate = table.Column<DateTime>(nullable: false),
+                    Email = table.Column<string>(nullable: true),
+                    Password = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {

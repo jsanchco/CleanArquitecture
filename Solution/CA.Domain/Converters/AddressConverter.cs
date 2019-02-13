@@ -13,6 +13,9 @@
     {
         public static AddressViewModel Convert(Address address)
         {
+            if (address == null)
+                return null;
+
             var addressViewModel = new AddressViewModel
             {
                 Id = address.Id,
@@ -30,7 +33,7 @@
 
         public static List<AddressViewModel> ConvertList(IEnumerable<Address> addresses)
         {
-            return addresses.Select(user =>
+            return addresses?.Select(user =>
                 {
                     var model = new AddressViewModel
                     {

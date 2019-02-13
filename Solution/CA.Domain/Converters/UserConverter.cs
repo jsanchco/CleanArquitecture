@@ -13,6 +13,9 @@
     {
         public static UserViewModel Convert(User user)
         {
+            if (user == null)
+                return null;
+
             var userViewModel = new UserViewModel
             {
                 Id = user.Id,
@@ -30,7 +33,7 @@
 
         public static List<UserViewModel> ConvertList(IEnumerable<User> users)
         {
-            return users.Select(user =>
+            return users?.Select(user =>
                 {
                     var model = new UserViewModel
                     {

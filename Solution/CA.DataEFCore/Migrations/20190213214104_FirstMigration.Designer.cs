@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CA.DataEFCore.Migrations
 {
     [DbContext(typeof(EFContext))]
-    [Migration("20190211213712_FirstMigration")]
+    [Migration("20190213214104_FirstMigration")]
     partial class FirstMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -62,12 +62,16 @@ namespace CA.DataEFCore.Migrations
 
                     b.Property<DateTime>("BirthDate");
 
+                    b.Property<string>("Email");
+
                     b.Property<string>("IPAddress");
 
                     b.Property<DateTime?>("ModifiedDate");
 
                     b.Property<string>("Name")
                         .IsRequired();
+
+                    b.Property<string>("Password");
 
                     b.Property<string>("Surname");
 
