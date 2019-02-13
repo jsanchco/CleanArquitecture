@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CA.DataEFCore", "CA.DataEFC
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CA.API", "CA.API\CA.API.csproj", "{A5803025-8667-4A54-8FFE-E4B651316E8B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CA.SeedData", "CA.SeedData\CA.SeedData.csproj", "{DF22176D-6F0A-4126-B6EC-A4BC7BAB0CA3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CA.SeedData", "CA.SeedData\CA.SeedData.csproj", "{DF22176D-6F0A-4126-B6EC-A4BC7BAB0CA3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CA.PeopleWEB", "CA.PeopleWEB\CA.PeopleWEB.csproj", "{3B88E3C8-D603-45DE-956B-24142816B837}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{DF22176D-6F0A-4126-B6EC-A4BC7BAB0CA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DF22176D-6F0A-4126-B6EC-A4BC7BAB0CA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DF22176D-6F0A-4126-B6EC-A4BC7BAB0CA3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B88E3C8-D603-45DE-956B-24142816B837}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B88E3C8-D603-45DE-956B-24142816B837}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B88E3C8-D603-45DE-956B-24142816B837}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B88E3C8-D603-45DE-956B-24142816B837}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

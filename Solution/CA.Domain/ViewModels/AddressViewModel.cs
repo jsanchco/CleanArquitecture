@@ -2,8 +2,6 @@
 {
     #region Using
 
-    using System.ComponentModel.DataAnnotations;
-
     #endregion
 
     public class AddressViewModel : BaseEntityViewModel
