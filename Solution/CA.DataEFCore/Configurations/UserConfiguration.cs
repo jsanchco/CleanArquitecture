@@ -19,6 +19,7 @@
 
             entity.Property(x => x.AddedDate).IsRequired();
             entity.Property(x => x.Name).IsRequired();
+            entity.Ignore(x => x.Token);
         }
     }
 }
