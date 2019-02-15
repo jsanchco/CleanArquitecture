@@ -10,6 +10,10 @@ namespace CA.Domain.Supervisor
     using Converters;
     using System;
     using Entities;
+    using System.IdentityModel.Tokens.Jwt;
+    using System.Security.Claims;
+    using System.Text;
+    using Microsoft.IdentityModel.Tokens;
 
     #endregion
 
@@ -18,6 +22,23 @@ namespace CA.Domain.Supervisor
         public async Task<UserViewModel> Authenticate(string email, string password, CancellationToken ct = default(CancellationToken))
         {
             var userViewModel = UserConverter.Convert(await _userRepository.Authenticate(email, password, ct));
+            if (userViewModel == null)
+                return null;
+
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(new Claim[]
+                {
+                    new Claim(ClaimTypes.Name, userViewModel.Id.ToString())
+                }),
+                Expires = DateTime.UtcNow.AddDays(7),
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+            };
+            var token = tokenHandler.CreateToken(tokenDescriptor);
+            userViewModel.Token = tokenHandler.WriteToken(token);
+
             return userViewModel;
         }
 
@@ -45,7 +66,9 @@ namespace CA.Domain.Supervisor
                 Name = newUserViewModel.Name,
                 Surname = newUserViewModel.Surname,
                 Age = newUserViewModel.Age,
-                BirthDate = newUserViewModel.BirthDate                
+                BirthDate = newUserViewModel.BirthDate,
+                Email = newUserViewModel.Email,
+                Password = newUserViewModel.Password
             };
 
             await _userRepository.AddAsync(user, ct);
@@ -66,6 +89,8 @@ namespace CA.Domain.Supervisor
             user.Surname = userViewModel.Surname;
             user.Age = userViewModel.Age;
             user.BirthDate = userViewModel.BirthDate;
+            user.Email = userViewModel.Email;
+            user.Password = userViewModel.Password;
 
             return await _userRepository.UpdateAsync(user, ct);
         }

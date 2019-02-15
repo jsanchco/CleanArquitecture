@@ -37,7 +37,8 @@
                 .AddMiddleware()
                 .AddCorsConfiguration()
                 .AddConnectionProvider(Configuration)
-                .AddAppSettings(Configuration);
+                .AddAppSettings(Configuration)
+                .AddAuthentication(Configuration);
 
             services.AddSwaggerGen(s =>
             {
@@ -73,6 +74,8 @@
                 s.SwaggerEndpoint("/swagger/v1/swagger.json", "v1 docs");
                 s.RoutePrefix = string.Empty;
             });
+
+            app.UseAuthentication();
         }
     }
 }

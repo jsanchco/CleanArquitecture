@@ -8,6 +8,7 @@
     using System.Threading.Tasks;
     using Domain.Supervisor;
     using Domain.ViewModels;
+    using Microsoft.AspNetCore.Authorization;
 
     #endregion
 
@@ -20,6 +21,25 @@
         public UsersController(ICASupervisor caSupervisor)
         {
             _caSupervisor = caSupervisor;
+        }
+
+        [AllowAnonymous]
+        [HttpPost("authenticate")]
+        public IActionResult Authenticate(UserViewModel userViwModel)
+        {
+            try
+            {
+                var user = _caSupervisor.Authenticate(userViwModel.Email, userViwModel.Password);
+
+                if (user == null)
+                    return BadRequest(new { message = "Username or password is incorrect" });
+
+                return new ObjectResult(user);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex);
+            }
         }
 
         [HttpGet]

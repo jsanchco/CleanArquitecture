@@ -1,4 +1,4 @@
-﻿namespace CA.API.Helpers
+﻿namespace CA.Domain.Helpers
 {
     public class AppSettings
     {
